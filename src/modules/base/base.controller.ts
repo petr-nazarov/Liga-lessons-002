@@ -6,8 +6,11 @@ import {
   Patch,
   Param,
   Delete,
+  HttpCode,
+  HttpStatus,
 } from '@nestjs/common';
 import { BaseService } from './base.service';
+import { ApiProperty } from '@nestjs/swagger';
 
 export abstract class BaseController<TModel, TCreateDto, TUpdateDto> {
   constructor(
@@ -34,6 +37,7 @@ export abstract class BaseController<TModel, TCreateDto, TUpdateDto> {
     return this.baseService.update(id, updateDto);
   }
 
+  @HttpCode(HttpStatus.NO_CONTENT)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.baseService.remove(id);

@@ -14,6 +14,6 @@ export class PostsService extends BaseService<
   constructor(
     @InjectModel(PostModel.name) private readonly postModel: Model<PostModel>,
   ) {
-    super(postModel)
+    super(postModel);
   }
 }

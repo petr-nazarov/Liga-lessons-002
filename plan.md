@@ -34,12 +34,25 @@
 
 debuger
 
+-- DTO
+-- service
+-- controllers
+-- Swagger
+--- End of lesson 4
+
+### Homework
+
+- [ ] Implement DI as now in the repo
+- [ ] BUT do not implement base Controller
+- [ ] Add swagger for all your request
+  - Example requests
+  - Tags
+
+---
 - User register/login (no repository pattern)
   -- JWT
+ -- Swager auth 
   -- repository
-  -- service
-  -- controllers
-  -- DTO
   -- Validation (check zod)
   -- API tests with Jest
 - Posts (no repository pattern)

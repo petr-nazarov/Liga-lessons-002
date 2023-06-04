@@ -1,4 +1,4 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
@@ -21,5 +21,10 @@ export class PostsController extends BaseController<
   ) {
     super(postService);
   }
-}
 
+  @Get()
+  async findAllModifined() {
+    const posts = await this.postService.findAll();
+    return { message: 'hello world', posts };
+  }
+}
