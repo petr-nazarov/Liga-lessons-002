@@ -12,7 +12,7 @@ import {
 import { BaseService } from './base.service';
 import { ApiProperty } from '@nestjs/swagger';
 
-export abstract class BaseController<TModel, TCreateDto, TUpdateDto> {
+export  class BaseController<TModel, TCreateDto, TUpdateDto> {
   constructor(
     private readonly baseService: BaseService<TModel, TCreateDto, TUpdateDto>,
   ) { }

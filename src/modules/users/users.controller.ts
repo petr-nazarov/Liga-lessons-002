@@ -29,6 +29,4 @@ export class UsersController {
     const user = await this.usersService.create(createUserDto);
     return user;
   }
-}               
-
-  
+}
