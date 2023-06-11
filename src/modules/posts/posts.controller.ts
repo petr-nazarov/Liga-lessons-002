@@ -5,8 +5,10 @@ import { UpdatePostDto } from './dto/update-post.dto';
 import { BaseController } from '../base/base.controller';
 import { BaseService } from '../base/base.service';
 import { PostModel } from './post.model';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('posts')
+@ApiTags('posts')
 export class PostsController extends BaseController<
   PostModel,
   CreatePostDto,
