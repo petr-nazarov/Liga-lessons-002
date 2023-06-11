@@ -47,11 +47,15 @@ debuger
 - [ ] Add swagger for all your request
   - Example requests
   - Tags
+##Lesson 5
+  -- JWT
+ -- Swager auth
 
+### Home work 
+ 1. Finsh "me" endpoint so it gives back a username ( from database, not from jwt) 
+ 2. Add create post behavior : when you create a post, posts `author` field is the id of the user who is creating it.
 ---
 - User register/login (no repository pattern)
-  -- JWT
- -- Swager auth 
   -- repository
   -- Validation (check zod)
   -- API tests with Jest
