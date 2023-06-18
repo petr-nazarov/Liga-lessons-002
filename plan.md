@@ -58,12 +58,25 @@ debuger
 
 ---
 
+-- Decorators
+-- Guards (auth)
+-- Middleware
+
+### Home Work
+
+-- Read about
+
+- unit tests
+- api tests
+- e2e tests with cypress
+
+---
+
 - User register/login (no repository pattern)
   -- repository
   -- Validation (check zod)
   -- API tests with Jest
 - Posts (no repository pattern)
-  -- Guards (auth)
   -- Permission check
   -- Admin users can edit a post of another user
   -- API tests with jest
