@@ -70,6 +70,7 @@ debuger
 - api tests
 - e2e tests with cypress
 - test mocking
+- Decorators
 
 ---
 
