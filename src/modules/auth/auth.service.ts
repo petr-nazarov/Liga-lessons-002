@@ -3,6 +3,7 @@ import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from '../users/users.service';
 import { AuthDto } from './dto/auth.dto';
+import { JwtPayload } from './jwt-payload.type';
 
 const saltOrRounds = 10;
 @Injectable()
@@ -22,7 +23,7 @@ export class AuthService {
   }
 
   async login({ username, password }: AuthDto) {
- const users = await this.usersService.find({ username });
+    const users = await this.usersService.find({ username });
 
     if (!users) {
       throw new UnauthorizedException('Invalid username');
@@ -32,7 +33,9 @@ export class AuthService {
     if (!isPasswordValid) {
       throw new Error('Invalid password');
     }
-    const payload = { _id: user._id, username };
+    const iat = new Date().getTime();
+    const exp = iat + 1000 * 60 * 60 * 24 * 2;
+    const payload: JwtPayload = { _id: user._id.toString(), username, iat, exp };
     return {
       access_token: this.jwtService.sign(payload),
     };
