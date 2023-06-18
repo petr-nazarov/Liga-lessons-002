@@ -69,6 +69,7 @@ debuger
 - unit tests
 - api tests
 - e2e tests with cypress
+- test mocking
 
 ---
 
