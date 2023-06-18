@@ -6,11 +6,11 @@ import { INestApplication } from '@nestjs/common';
 
 const swaggerSetup = (app: INestApplication) => {
   const config = new DocumentBuilder()
-   .addBearerAuth(
+    .addBearerAuth(
       {
-        type: 'http'
+        type: 'http',
       },
-      'default'
+      'default',
     )
     .setTitle('Cats example')
     .setDescription('The cats API description')

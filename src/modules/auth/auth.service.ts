@@ -35,7 +35,12 @@ export class AuthService {
     }
     const iat = new Date().getTime();
     const exp = iat + 1000 * 60 * 60 * 24 * 2;
-    const payload: JwtPayload = { _id: user._id.toString(), username, iat, exp };
+    const payload: JwtPayload = {
+      _id: user._id.toString(),
+      username,
+      iat,
+      exp,
+    };
     return {
       access_token: this.jwtService.sign(payload),
     };

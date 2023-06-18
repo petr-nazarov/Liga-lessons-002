@@ -9,13 +9,12 @@ import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { TokenMiddleware } from './modules/auth/token.middleware';
 import { JwtModule } from '@nestjs/jwt';
+import { CoreModule } from './core.module';
 
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb://root:password@localhost:7500'),
-    JwtModule.register({
-      secret: 'secret123432',
-    }),
+    CoreModule,
     PostsModule,
     UsersModule,
     AuthModule,

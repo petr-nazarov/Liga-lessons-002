@@ -7,15 +7,25 @@ import { JwtPayload } from './jwt-payload.type';
 @Injectable()
 export class TokenMiddleware implements NestMiddleware {
   constructor(private readonly jwtService: JwtService) {}
-  use(req: RequestWithUser, res: Response, next: NextFunction) {
+  use(req: any, res: Response, next: NextFunction) {
     const bearerToken = req.headers['authorization'];
-    if (bearerToken) {
-      const token = bearerToken.split(' ')[1];
-      if (token) {
-        const user = this.jwtService.verify<JwtPayload>(token);
-        req.user = user;
-      }
+    if (!(bearerToken)) {
+      next();
+      return;
     }
+    const token = bearerToken.split(' ')[1];
+    if (!token) {
+      next();
+      return;
+    }
+
+    const user = this.jwtService.verify<JwtPayload>(token);
+    if (!user) {
+      next();
+      return;
+    }
+
+    (req as unknown as RequestWithUser).user = user;
     next();
   }
 }
