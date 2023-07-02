@@ -31,7 +31,8 @@
     "bcrypt": "^5.1.0",
     "mongoose": "^7.2.1",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.2.0"
+    "rxjs": "^7.2.0",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",

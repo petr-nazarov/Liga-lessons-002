@@ -73,6 +73,14 @@ debuger
 
 ---
 
+### Home work
+
+- Write test for register function (use Faker.js)
+- Write test for login functions
+- Write test for FORBIDDEN routes
+- Write test for Allowed routes
+- Write a decorator for controller methods using  zod validating a dto
+
 - User register/login (no repository pattern)
   -- repository
   -- Validation (check zod)

@@ -5,9 +5,10 @@ import {
   Body,
   Post,
   UseGuards,
+  BadRequestException,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { AuthDto } from './dto/auth.dto';
+import {  AuthDTOSchema, AuthDto } from './dto/auth.dto';
 import { ApiTags, ApiBearerAuth } from '@nestjs/swagger';
 import { Requestor } from './requestor.decorator';
 import { JwtPayload } from './jwt-payload.type';
@@ -27,7 +28,11 @@ export class AuthController {
 
   @Post('register')
   async register(@Body() authDto: AuthDto) {
-    return await this.authService.register(authDto);
+    const validation = AuthDTOSchema.safeParse(authDto);
+    if (!validation.success) {
+      throw new BadRequestException(validation);
+    }
+    return await this.authService.register(authDto as AuthDto);
   }
 
   @Post('login')

@@ -1,4 +1,5 @@
-import { ApiProperty } from "@nestjs/swagger";
+import { z } from 'zod';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class AuthDto {
   @ApiProperty({
@@ -13,3 +14,8 @@ export class AuthDto {
   })
   password: string;
 }
+
+export const AuthDTOSchema = z.object({
+  username: z.string().email(),
+  password: z.string().min(8),
+});
