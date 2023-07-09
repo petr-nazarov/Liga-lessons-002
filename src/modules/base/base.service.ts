@@ -1,34 +1,35 @@
 import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { BaseModel } from './base.model';
+import { BaseRepository } from './base.repository';
 @Injectable()
 export class BaseService<TModel, TCreateDto, TUpdateDto> {
   constructor(
-    @InjectModel(BaseModel.name) private readonly baseModel: Model<TModel>,
+    private readonly baseRepository: BaseRepository<
+      TModel,
+      TCreateDto,
+      TUpdateDto
+    >,
   ) {}
 
   async find(filter: any) {
-    return await this.baseModel.find(filter);
+    return await this.baseRepository.find(filter);
   }
   async create(createDto: TCreateDto) {
-    const createdModel = new this.baseModel(createDto);
-    return await createdModel.save();
+    return await this.baseRepository.create(createDto);
   }
 
   async findAll() {
-    return await this.baseModel.find();
+    return await this.baseRepository.findAll();
   }
 
   async findOne(id: string) {
-    return await this.baseModel.findById(id);
+    return await this.baseRepository.findOne(id);
   }
 
   async update(id: string, updateDto: TUpdateDto) {
-    return await this.baseModel.findByIdAndUpdate(id, updateDto);
+    return await this.baseRepository.update(id, updateDto);
   }
 
   async remove(id: string) {
-    await this.baseModel.findByIdAndRemove(id);
+    await this.baseRepository.remove(id);
   }
 }
