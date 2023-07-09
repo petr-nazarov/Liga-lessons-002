@@ -1,7 +1,13 @@
 import { z } from 'zod';
 import { ApiProperty } from '@nestjs/swagger';
 
-export class AuthDto {
+export const AuthDTOSchema = z.object({
+  username: z.string().email(),
+  password: z.string().min(8),
+});
+
+
+export class AuthDto implements z.infer<typeof AuthDTOSchema> {
   @ApiProperty({
     example: 'username',
     description: 'Username',
@@ -14,8 +20,3 @@ export class AuthDto {
   })
   password: string;
 }
-
-export const AuthDTOSchema = z.object({
-  username: z.string().email(),
-  password: z.string().min(8),
-});

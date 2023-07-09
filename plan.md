@@ -82,6 +82,15 @@ debuger
 - Write test for Allowed routes
 - Write a decorator for controller methods using  zod validating a dto
 
+### Home work
+- Write a decorator for controller methods using  zod validating a dto
+- Write Permission Based Authz as deocrators
+
+
+
+
+
+
 - User register/login (no repository pattern)
   -- repository
   -- Validation (check zod)
